@@ -1,0 +1,80 @@
+<!-- Made by Ronald Ouldsalha, Date 5/30/2025 -->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure access Form</title>
+    <!-- Link the External Javascript -->
+     <script src="validate.js" defer></script>
+     <!-- Emedded CSS for visuals -->
+      <style>
+        body {
+            background-color: beige;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 40px;
+        }
+        form{
+            background: bisque;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 450px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px soild #ccc;   
+         }
+         button{
+            background-color: lightblue;
+            color: white;
+            border: none;
+         }
+         #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: darkred;
+         }
+         img {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+         }
+      </style>
+</head>
+<body>
+    
+    <!-- this is the page heading -->
+     <h1>welcome to the gulag</h1>
+
+     <!-- form container -->
+      <form id="userForm" onsubmit="return validateForm();">
+        <!-- the first name -->
+         <label for="firstname">First Name</label>
+         <input type="text" id="firstName" name="firstName" required>
+
+         <!-- Last name time -->
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required>
+
+          <!-- zip code time -->
+           <label for="zipCode"> Zipe Code</label>
+           <input type="text" id="zipCode" name="zipCode" required>
+           
+           <!-- submit button time -->
+            <button type="submit">Unlock Message</button>
+      </form>
+
+
+<!-- feed back zone for the feed back -->
+      <div id="message"></div>
+
+      <!-- pretty picture for all the lookers -->
+       <img src="https://picsum.photos/400/200" alt="Security image banner">
+</body>
+</html>
