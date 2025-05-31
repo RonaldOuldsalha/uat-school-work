@@ -2,15 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ronalds javascript function</title>
-    <script scr="code.js"></script>
-    <link href="main.css" rel="stylesheet">
+    <script scr="code.js" defer></script>
 </head>
+
 <body>
-    <header>
-        <h1 id="heading">Welcome to Quirks casino</h1>
-        <button onclick="updateText();">Change Text</button>
-    </header>
+    <!-- header is what the user see's first and is at the top -->
+
+        <h1 id="heading">Welcome to Ronalds casino</h1>
+        <p> doing my best</p>
+
+    <!-- Form to trigger the game -->
+<form onsubmit="playDiceGame(); return false;">
+    <!-- Submit button to start the game -->
+    <input type="submit" value="Roll the Dice">
+</form>
+
+<!-- Display the result -->
+<div id="gameResult"></div>
+
+<!-- Example of a parameters function -->
+<form onsubmit="displayUserMessage(document.getElementById('playerName').value); return false;">
+    <label for="playerName">Enter your name:</label>
+    <input type="text" id="playerName" name="playerName">
+    <input type="submit" value="Submit">
+</form>
+
+<!-- Display the personalized message -->
+<div id="userMessage"></div>
+
 </body>
 </html>
