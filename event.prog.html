@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moving Program</title>
+
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: antiquewhite;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1{
+            color: black;
+        }
+
+        img{
+            width: 200px;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+
+        button{
+            font-size: 16px;
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #message{
+            margin-top: 30px;
+            font-weight: bold;
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Picture Mover</h1>
+
+    <button id="startBtn" onclick="startMovement()">Start</button>
+
+    <button id="stopBtn" onclick=" stopMovement()"disabled>Stop</button>
+
+    <img id= "meme Image" src="Html meme.png" alt="Html meme">
+
+    <div id="message"></div>
+
+    <script>
+
+        let x = 100;
+        let y = 100;
+
+        let interval= null;
+
+        function moveImage() {
+            x = Math.floor(Math.random() * (window.innerWidth - 200));
+            y = Math.floor(Math.random() * (window.innerheight - 200));
+
+            const meme = document.getElementById("meme Image");
+            meme.style.left= x + "px";
+            meme.style.top = y + "px";
+        }
+
+        function startMovement() {
+            document.getElementById("startBtn").disabled = false;
+
+            document.getElementById("stopBtn").disabled = false;
+
+            document.getElementById("message").innerHTML = "meme is moving around";
+
+            interval = setInterval(moveImage, 500);
+        }
+
+        function stopMovement() {
+
+            clearInterval(interval);
+
+            document.getElementById("startBtn").disabled = false;
+
+            document.getElementById("stopBtn").disabled = true;
+
+            document.getElementById("message").innerHTML = "meme has stopped.";
+        }
+    </script>
+</body>
+</html>
