@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Palindrome Checker</title>
+ 
+  <!-- styling elements -->
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color:rgba(255, 255, 255, 0.808);
+      text-align: center;
+      padding: 30px;
+    }
+ 
+    h1 {
+      color: #094b88;
+    }
+ 
+    #result {
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #ca5db3;
+    }
+ 
+    #image-box {
+      margin-top: 30px;
+    }
+ 
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1em;
+      width: 300px;
+    }
+ 
+    input[type="submit"] {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #003482;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+ 
+    input[type="submit"]:hover {
+      background-color: #ad950d;
+    }
+  </style>
+</head>
+<body>
+ 
+  <!-- Heading of the page -->
+  <h1>Palindrome Checker</h1>
+ 
+  <!-- Form for user to submit strings -->
+  <form id="palindromeForm">
+    <!-- Input box for user to enter word -->
+    <label for="userInput">Enter a word or phrase:</label><br><br>
+    <input type="text" id="userInput" required>
+    <br><br>
+    <!-- Submit button -->
+    <input type="submit" value="Check">
+  </form>
+ 
+  <!-- Area to display the results -->
+  <div id="result"></div>
+ 
+  <!-- Optional image for creativity -->
+  <div id="image-box">
+    <img src="https://picsum.photos/400/200" alt="Symmetry Icon">
+  </div>
+ 
+  <!-- JavaScript section (external to HTML elements) -->
+  <script>
+    // Get reference to the form and result div
+    const form = document.getElementById("palindromeForm");
+    const resultDiv = document.getElementById("result");
+ 
+    // Loop control variable
+    let keepGoing = true;
+ 
+    // Form submission event
+    form.onsubmit = function(event) {
+      // Prevent the form from refreshing the page
+      event.preventDefault();
+ 
+      // Getting user input
+      let input = document.getElementById("userInput").value;
+ 
+      // Remove spaces and convert to lowercase for comparison
+      let cleaned = input.replace(/\s+/g, '').toLowerCase();
+ 
+      // Reverse the cleaned string
+      let reversed = cleaned.split('').reverse().join('');
+ 
+      // Check if the cleaned string is a palindrome
+      if (cleaned === reversed) {
+        resultDiv.innerHTML += `<p>"${input}" is a palindrome.</p>`;
+      } else {
+        resultDiv.innerHTML += `<p>"${input}" is NOT a palindrome.</p>`;
+      }
+ 
+      // Ask user if they want to continue
+      // Use confirm to simulate user decision (no alerts for output)
+      if (!confirm("Do you want to check another word?")) {
+        // If not, disable the form
+        form.innerHTML = "<p>Thank you for using the Palindrome Checker!</p>";
+      } else {
+        // Clear the input box for the next word
+        document.getElementById("userInput").value = '';
+        document.getElementById("userInput").focus();
+      }
+    };
+  </script>
+</body>
+</html>
