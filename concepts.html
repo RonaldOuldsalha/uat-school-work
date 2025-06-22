@@ -1,0 +1,112 @@
+<!-- 
+    Name: Ronald Ouldsalha
+    Assignment: JavaScript Programming Concepts Webpage
+    Description: This webpage includes decision logic, loops, string manipulation, functions, and object-oriented JavaScript.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Programming Showcase</title>
+
+
+    <!--  styling for coolness -->
+    <style>
+        body {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+            background-color: #131111;
+            color: #8194d1;
+            text-align: center;
+            padding: 30px;
+        }
+        input, button {
+            font-family: inherit;
+            padding: 10px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #62ff62;
+        }
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <h1>Programming Concepts</h1>
+
+    <!-- space for user to enter a string -->
+    <form onsubmit="handleSubmit(); return false;">
+        <!-- Input box for text -->
+        <label for="userText">Enter a word to check and see if its a palindrome this will also count vowels:</label><br>
+        <input type="text" id="userText" required><br>
+        <!-- submit button -->
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Output holder for messages -->
+    <div id="output"></div>
+
+    <!-- coding image  -->
+    <img src="code pic.jpeg" alt="Code Graphic" width="250" style="margin-top:20px; border-radius: 15px;">
+
+    <!-- JavaScript -->
+    <script>
+        // defines a class to process the user's input
+        class TextProcessor {
+            constructor(text) {
+                this.text = text;
+            }
+
+            // checks the words the string to see if its a palindrome
+            isPalindrome() {
+                const clean = this.text.toLowerCase().replace(/[^a-z0-9]/g, "");
+                const reversed = clean.split("").reverse().join("");
+                return clean === reversed;
+            }
+
+            // counts vowels in a string/word
+            countVowels() {
+                const vowels = "aeiou";
+                let count = 0;
+                for (let char of this.text.toLowerCase()) {
+                    if (vowels.includes(char)) {
+                        count++;
+                    }
+                }
+                return count;
+            }
+
+            // returns the summary message
+            getSummary() {
+                const palindromeMsg = this.isPalindrome()
+                    ? "Yes, this is a palindrome!"
+                    : "No, this is not a palindrome.";
+                const vowelCount = this.countVowels();
+                return `${palindromeMsg}<br>Vowel Count: ${vowelCount}`;
+            }
+        }
+
+        // executes the form submission
+        function handleSubmit() {
+            // acquires value from the input box
+            const inputText = document.getElementById('userText').value;
+
+            // checks the input length
+            if (inputText.length < 3) {
+                document.getElementById('output').innerHTML = "Please enter at least 3 characters.";
+                return;
+            }
+
+            // Create an object from the class
+            const processor = new TextProcessor(inputText);
+
+            // shows the result in the HTML output div
+            document.getElementById('output').innerHTML = processor.getSummary();
+        }
+    </script>
+</body>
+</html>
