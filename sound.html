@@ -1,0 +1,78 @@
+<!-- 
+    Name: [Ronald Ouldsalha]
+    Assignment: Adding Sound to a Webpage
+    Description: This webpage plays a background sound and includes visual styling to enhance user experience.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata and page title -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walking through nature</title>
+
+    <!-- Link to a custom Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+    <!-- Internal CSS styles to enhance the look and feel -->
+    <style>
+        /* trying to have a nature feel cuz feels matter */
+        body {
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+            background-color: rgb(23, 56, 23) ; /* green because trees */
+            color: #774128d3; 
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Styling the picture with spacing and round corners */
+        img {
+            width: 300px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        /* Style for play button */
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #28639e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Hover effect adds a nice touch to the button */
+        button:hover {
+            background-color: #264b69;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main header of the webpage -->
+    <h1>Walking through nature</h1>
+
+    <!-- picture :) -->
+    <img src="nature.jpg" alt="Nature Image">
+
+    <!-- Add a button that triggers the sound when clicked -->
+    <button onclick="playSound()">Play Background Sound</button>
+
+    <!-- HTML audio element referencing a local MP3 file -->
+    <audio id="natureAudio">
+        <source src="Sunny Day-SoundBible.com-2064222612.mp3" type="audio/mpeg">
+
+    </audio>
+
+    <!-- JavaScript section that tells you how the sound will be played -->
+    <script>
+        // Function to play the audio
+        function playSound() {
+            document.getElementById('natureAudio').play(); // Sound plays when button is clicked
+        }
+    </script>
+</body>
+</html>
